@@ -1,6 +1,7 @@
 import { Field, ID, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
+import { ParkingStay } from './parking-stay.model';
 
 export enum PaymentMethodType {
   CreditCard = 'credit-card',
@@ -45,6 +46,9 @@ export class ParkingPayment {
 
   @Prop({ required: true })
   parkingStaysId: string;
+
+  @Field((type) => ParkingStay)
+  parkingStay?: ParkingStay;
 
   @Prop({ required: true })
   userId: string;

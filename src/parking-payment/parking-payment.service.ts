@@ -23,4 +23,8 @@ export class ParkingPaymentService {
 
     await this.parkingPaymentModel.create({ ...msg, status: randomStatus });
   }
+
+  public async find(params): Promise<ParkingPayment[]> {
+    return this.parkingPaymentModel.find(params)
+  }
 }
